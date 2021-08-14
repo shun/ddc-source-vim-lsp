@@ -12,7 +12,7 @@ import {
 
 import {
   once
-} from "https://deno.land/x/denops_std@v1.0.1/anonymous/mod.ts";
+} from "https://deno.land/x/denops_std@v1.4.0/anonymous/mod.ts";
 
 export class Source extends BaseSource {
   async gatherCandidates(
