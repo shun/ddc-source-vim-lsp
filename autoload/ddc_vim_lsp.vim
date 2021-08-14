@@ -3,7 +3,8 @@ function! ddc_vim_lsp#_callback(server, position, plugin_name, method_name, data
     return
   endif
 
-  call denops#request(a:plugin_name, a:method_name, [a:data['response']['result']['items']])
+  let lspitems = lsp#omni#get_vim_completion_items(l:options)['items']
+  call denops#request(a:plugin_name, a:method_name, [lspitems])
 endfunction
 
 function! ddc_vim_lsp#request(plugin_name, method_name) abort

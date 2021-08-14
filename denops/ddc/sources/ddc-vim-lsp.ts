@@ -25,18 +25,11 @@ export class Source extends BaseSource {
   ): Promise<Candidate[]> {
     return new Promise((resolve) => {
       denops.call("ddc_vim_lsp#request", denops.name, once(denops, (response) => {
-        resolve(this.toCandidates(response));
+        resolve(response);
       })[0])
     })
     .then((cs: Candidate[]) => {
       return cs;
     });
-  }
-
-  toCandidates(response: unknown[]): Candidate[] {
-    const cs: Candidate[] = response.map((e) => {
-	    return {word: e.label};
-    });
-    return cs;
   }
 }
