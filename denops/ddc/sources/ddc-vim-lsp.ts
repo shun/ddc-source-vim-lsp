@@ -23,8 +23,15 @@ export class Source extends BaseSource {
     _sourceParams: Record<string, unknown>,
     completeStr: string,
   ): Promise<Candidate[]> {
+
+    const lspservers = await denops.call("lsp#get_allowed_servers");
+    if (lspservers.length === 0) {
+      return [];
+    }
+
     return new Promise((resolve) => {
-      denops.call("ddc_vim_lsp#request", denops.name, once(denops, (response) => {
+      // NOTE: choose first lsp server
+      denops.call("ddc_vim_lsp#request", lspservers[0], denops.name, once(denops, (response) => {
         resolve(response);
       })[0])
     })
