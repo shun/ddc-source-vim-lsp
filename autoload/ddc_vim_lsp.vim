@@ -1,5 +1,6 @@
 function! ddc_vim_lsp#_callback(server, position, plugin_name, method_name, data) abort
   if lsp#client#is_error(a:data) || !has_key(a:data, 'response') || !has_key(a:data['response'], 'result')
+    call denops#request(a:plugin_name, a:method_name, [])
     return
   endif
 
