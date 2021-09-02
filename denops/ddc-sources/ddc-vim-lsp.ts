@@ -1,13 +1,13 @@
 import {
   BaseSource,
   Candidate,
-} from "https://deno.land/x/ddc_vim@v0.4.2/types.ts#^";
+} from "https://deno.land/x/ddc_vim@v0.5.0/types.ts#^";
 
 import {
   batch,
   Denops,
   vars,
-} from "https://deno.land/x/ddc_vim@v0.4.2/deps.ts#^";
+} from "https://deno.land/x/ddc_vim@v0.5.0/deps.ts#^";
 
 import {
   once
