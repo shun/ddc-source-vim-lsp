@@ -1,7 +1,7 @@
 # ddc-vim-lsp
 
 vim-lsp for ddc.vim.
-- ddc.vim : v0.5.0
+- ddc.vim : v0.6.0
 
 <img src="https://user-images.githubusercontent.com/212602/131358924-a62bd611-81ea-413b-aba5-2439fc42ae66.png" width="600"><br>
 
