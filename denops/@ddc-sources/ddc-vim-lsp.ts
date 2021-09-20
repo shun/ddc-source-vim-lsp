@@ -9,12 +9,11 @@ import {
   vars,
 } from "https://deno.land/x/ddc_vim@v0.13.0/deps.ts#^";
 
-type Params = {
-};
+type Params = {};
 
 export class Source extends BaseSource {
   async onInit(args: {
-    denops: Denops,
+    denops: Denops;
   }): Promise<void> {
     await batch(args.denops, async (denops) => {
       await vars.g.set(denops, "ddc#source#ddc_vim_lsp#_results", []);
@@ -24,12 +23,18 @@ export class Source extends BaseSource {
   }
 
   async gatherCandidates(args: {
-    denops: Denops,
-    context: Context,
-    completeStr: string,
+    denops: Denops;
+    context: Context;
+    completeStr: string;
   }): Promise<Candidate[]> {
-    const prevInput = await vars.g.get(args.denops, "ddc#source#ddc_vim_lsp#_prev_input");
-    const requested = await vars.g.get(args.denops, "ddc#source#ddc_vim_lsp#_requested");
+    const prevInput = await vars.g.get(
+      args.denops,
+      "ddc#source#ddc_vim_lsp#_prev_input",
+    );
+    const requested = await vars.g.get(
+      args.denops,
+      "ddc#source#ddc_vim_lsp#_requested",
+    );
     if (args.context.input == prevInput && requested) {
       return await vars.g.get(args.denops, "ddc#source#ddc_vim_lsp#_results");
     }
@@ -42,7 +47,11 @@ export class Source extends BaseSource {
     await batch(args.denops, async (denops) => {
       await vars.g.set(denops, "ddc#source#ddc_vim_lsp#_results", []);
       await vars.g.set(denops, "ddc#source#ddc_vim_lsp#_requested", false);
-      await vars.g.set(denops, "ddc#source#ddc_vim_lsp#_prev_input", args.context.input);
+      await vars.g.set(
+        denops,
+        "ddc#source#ddc_vim_lsp#_prev_input",
+        args.context.input,
+      );
 
       // NOTE: choose first lsp server
       await denops.call("ddc_vim_lsp#request", lspservers[0]);
