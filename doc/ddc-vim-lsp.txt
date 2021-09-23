@@ -31,9 +31,9 @@ EXAMPLES                        *ddc-vim-lsp-examples*
 
 >
     " Use ddc-vim-lsp source.
-    call ddc#custom#patch_global('sources', ['ddc-vim-lsp'])
+    call ddc#custom#patch_global('sources', ['vim-lsp'])
     call ddc#custom#patch_global('sourceOptions', {
-        \ 'ddc-vim-lsp': {
+        \ 'vim-lsp': {
         \   'matchers': ['matcher_head'],
         \   'mark': 'lsp',
         \ },
