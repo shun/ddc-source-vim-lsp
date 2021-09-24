@@ -28,9 +28,9 @@ https://github.com/mattn/vim-lsp-settings
 ## Configuration
 
 ```
-    call ddc#custom#patch_global('sources', ['ddc-vim-lsp'])
+    call ddc#custom#patch_global('sources', ['vim-lsp'])
     call ddc#custom#patch_global('sourceOptions', {
-        \ 'ddc-vim-lsp': {
+        \ 'vim-lsp': {
         \   'matchers': ['matcher_head'],
         \   'mark': 'lsp',
         \ },
