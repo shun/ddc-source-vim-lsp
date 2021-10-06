@@ -11,9 +11,14 @@ import {
 type Params = {};
 
 export class Source extends BaseSource<Params> {
+  static readonly CMAX = 100;
+  c = 0;
   async gatherCandidates(
     args: GatherCandidatesArguments<Params>,
   ): Promise<Candidate[]> {
+    this.c++;
+    if(this.c === Source.CMAX) this.c = 0;
+
     const lspservers: string[] = await args.denops.call(
       "lsp#get_allowed_servers",
       // deno-lint-ignore no-explicit-any
@@ -22,7 +27,7 @@ export class Source extends BaseSource<Params> {
       return [];
     }
 
-    const id = `source/${this.name}`;
+    const id = `source/${this.name}/${this.c}`;
     void args.denops.call("ddc_vim_lsp#request", lspservers[0], id);
 
     const items = await (args as any).onCallback(id, 2000);
