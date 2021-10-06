@@ -23,7 +23,7 @@ export class Source extends BaseSource<Params> {
     }
 
     const id = `source/${this.name}`;
-    await args.denops.call("ddc_vim_lsp#request", lspservers[0], id);
+    void args.denops.call("ddc_vim_lsp#request", lspservers[0], id);
 
     const items = await (args as any).onCallback(id, 2000);
     return items;
