@@ -26,10 +26,13 @@ export class Source extends BaseSource<Params> {
     }
 
     const id = `source/${this.name}/${this.counter}`;
-    void args.denops.call("ddc_vim_lsp#request", lspservers[0], id);
 
     // TODO: remove as any
-    const items: Candidate[] = await (args as any).onCallback(id) as any;
+    const [items] = await Promise.all([
+      // deno-lint-ignore no-explicit-any
+      (args as any).onCallback(id) as Promise<Candidate[]>,
+      args.denops.call("ddc_vim_lsp#request", lspservers[0], id),
+    ]);
     return items;
   }
 
