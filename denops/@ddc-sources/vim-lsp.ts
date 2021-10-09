@@ -1,11 +1,11 @@
 import {
   BaseSource,
   Candidate,
-} from "https://deno.land/x/ddc_vim@v0.13.0/types.ts#^";
+} from "https://deno.land/x/ddc_vim@v0.16.0/types.ts#^";
 
 import {
   GatherCandidatesArguments,
-} from "https://deno.land/x/ddc_vim@v0.13.0/base/source.ts#^";
+} from "https://deno.land/x/ddc_vim@v0.16.0/base/source.ts#^";
 
 // deno-lint-ignore ban-types
 type Params = {};
@@ -27,10 +27,8 @@ export class Source extends BaseSource<Params> {
 
     const id = `source/${this.name}/${this.counter}`;
 
-    // TODO: remove as any
     const [items] = await Promise.all([
-      // deno-lint-ignore no-explicit-any
-      (args as any).onCallback(id) as Promise<Candidate[]>,
+      args.onCallback(id) as Promise<Candidate[]>,
       args.denops.call("ddc_vim_lsp#request", lspservers[0], id),
     ]);
     return items;
