@@ -1,4 +1,4 @@
-function! ddc_vim_lsp#_callback(server, position, alias, data) abort
+function! ddc_vim_lsp#_callback(server, position, id, data) abort
   if lsp#client#is_error(a:data) || !has_key(a:data, 'response') || !has_key(a:data['response'], 'result')
     return
   endif
@@ -10,15 +10,10 @@ function! ddc_vim_lsp#_callback(server, position, alias, data) abort
       \ }
   let lspitems = lsp#omni#get_vim_completion_items(l:options)['items']
 
-  if len(lspitems) > 0
-    let g:ddc#source#ddc_vim_lsp#{a:alias}#_results = lspitems
-    let g:ddc#source#ddc_vim_lsp#{a:alias}#_requested = v:true
-
-    call ddc#refresh_candidates()
-  endif
+  call ddc#callback(a:id, lspitems)
 endfunction
 
-function! ddc_vim_lsp#request(server_name, alias) abort
+function! ddc_vim_lsp#request(server_name, id) abort
   let l:server = lsp#get_server_info(a:server_name)
   let l:position = lsp#get_position()
 
@@ -28,6 +23,6 @@ function! ddc_vim_lsp#request(server_name, alias) abort
     \   'textDocument': lsp#get_text_document_identifier(),
     \   'position': l:position,
     \ },
-    \ 'on_notification': function('ddc_vim_lsp#_callback', [l:server, l:position, a:alias]),
+    \ 'on_notification': function('ddc_vim_lsp#_callback', [l:server, l:position, a:id]),
     \ })
 endfunction
