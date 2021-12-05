@@ -35,6 +35,9 @@ https://github.com/mattn/vim-lsp-settings
         \ })
 ```
 
+ddc.vim remove duplicated keyword by default.
+If you want to list up both of them, please add `'dup': v:true` .
+
 ## Screenshots
 
 <img src="https://user-images.githubusercontent.com/212602/131840821-e3a94117-2eb9-44b9-8da6-3b14ed15b893.png"><br>
