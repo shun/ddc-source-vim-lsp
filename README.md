@@ -1,7 +1,7 @@
 # ddc-vim-lsp
 
 vim-lsp for ddc.vim.
-- ddc.vim : v0.16.0
+- ddc.vim : v1.0.0
 
 ## Required
 
