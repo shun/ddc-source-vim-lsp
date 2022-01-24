@@ -26,3 +26,15 @@ function! ddc_vim_lsp#request(server_name, id) abort
     \ 'on_notification': function('ddc_vim_lsp#_callback', [l:server, l:position, a:id]),
     \ })
 endfunction
+
+
+function! ddc_vim_lsp#get_completion_servers() abort
+  let l:names = []
+  for l:server_name in lsp#get_allowed_servers()
+    let l:capabilities = lsp#get_server_capabilities(l:server_name)
+    if has_key(l:capabilities, 'completionProvider')
+      call add(l:names, l:server_name)
+    endif
+  endfor
+  return l:names
+endfunction
