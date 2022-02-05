@@ -18,7 +18,7 @@ export class Source extends BaseSource<Params> {
     this.counter = (this.counter + 1) % 100;
 
     const lspservers: string[] = await args.denops.call(
-      "lsp#get_allowed_servers",
+      "ddc_vim_lsp#get_completion_servers",
       // deno-lint-ignore no-explicit-any
     ) as any;
     if (lspservers.length === 0) {
