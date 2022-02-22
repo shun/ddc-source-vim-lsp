@@ -9,8 +9,10 @@ function! ddc_vim_lsp#_callback(server, position, id, data) abort
       \ 'response': a:data['response'],
       \ }
   let lspitems = lsp#omni#get_vim_completion_items(l:options)['items']
+  let isIncomplete = has_key(a:data['response']['result'], 'isIncomplete') ? 
+        \ a:data['response']['result']['isIncomplete'] : v:false
 
-  call ddc#callback(a:id, lspitems)
+  call ddc#callback(a:id, {'items': lspitems, 'isIncomplete': isIncomplete})
 endfunction
 
 function! ddc_vim_lsp#request(server_name, id) abort
