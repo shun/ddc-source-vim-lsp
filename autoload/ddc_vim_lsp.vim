@@ -30,12 +30,16 @@ function! ddc_vim_lsp#request(server_name, id) abort
 endfunction
 
 
-function! ddc_vim_lsp#get_completion_servers() abort
+function! ddc_vim_lsp#get_completion_servers(ignoreCompleteProvider) abort
   let l:names = []
   for l:server_name in lsp#get_allowed_servers()
     let l:capabilities = lsp#get_server_capabilities(l:server_name)
-    if has_key(l:capabilities, 'completionProvider')
+    if a:ignoreCompleteProvider
       call add(l:names, l:server_name)
+    else
+      if has_key(l:capabilities, 'completionProvider')
+        call add(l:names, l:server_name)
+      endif
     endif
   endfor
   return l:names

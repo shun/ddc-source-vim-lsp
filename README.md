@@ -26,6 +26,8 @@ https://github.com/mattn/vim-lsp-settings
 ## Configuration
 
 ```
+    e.g.
+
     call ddc#custom#patch_global('sources', ['vim-lsp'])
     call ddc#custom#patch_global('sourceOptions', {
         \ 'vim-lsp': {
@@ -33,6 +35,16 @@ https://github.com/mattn/vim-lsp-settings
         \   'mark': 'lsp',
         \ },
         \ })
+
+    " if you want to use the unsupported CompleteProvider Server,
+    " set true by'ignoreCompleteProvider'.
+    call ddc#custom#patch_filetype(['css'], {
+       \ 'sourceParams': {
+       \   'vim-lsp': {
+       \     'ignoreCompleteProvider': v:true,
+       \   },
+       \ },
+       \ })
 ```
 
 ddc.vim remove duplicated keyword by default.

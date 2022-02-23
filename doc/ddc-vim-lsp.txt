@@ -38,7 +38,18 @@ EXAMPLES                        *ddc-vim-lsp-examples*
         \   'mark': 'lsp',
         \ },
         \ })
+
+    " if you want to use the unsupported CompleteProvider Server,
+    " set true by'ignoreCompleteProvider'.
+    call ddc#custom#patch_filetype(['css'], {
+       \ 'sourceParams': {
+       \   'vim-lsp': {
+       \     'ignoreCompleteProvider': v:true,
+       \   },
+       \ },
+       \ })
 <
+
 
 ddc.vim remove duplicated keyword by default.
 If you want to list up both of them, please add `'dup': v:true` .

@@ -9,7 +9,9 @@ import {
 } from "https://deno.land/x/ddc_vim@v2.0.0/base/source.ts#^";
 
 // deno-lint-ignore ban-types
-type Params = {};
+type Params = {
+  ignoreCompleteProvider: boolean;
+};
 
 export class Source extends BaseSource<Params> {
   private counter = 0;
@@ -20,6 +22,7 @@ export class Source extends BaseSource<Params> {
 
     const lspservers: string[] = await args.denops.call(
       "ddc_vim_lsp#get_completion_servers",
+      args.sourceParams.ignoreCompleteProvider,
       // deno-lint-ignore no-explicit-any
     ) as any;
     if (lspservers.length === 0) {
@@ -39,6 +42,8 @@ export class Source extends BaseSource<Params> {
   }
 
   params(): Params {
-    return {};
+    return {
+      ignoreCompleteProvider: false,
+    };
   }
 }
