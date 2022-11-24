@@ -15,7 +15,7 @@ type Params = {
 
 export class Source extends BaseSource<Params> {
   private counter = 0;
-  async gather(
+  override async gather(
     args: GatherArguments<Params>,
   ): Promise<DdcGatherItems> {
     this.counter = (this.counter + 1) % 100;
@@ -41,7 +41,7 @@ export class Source extends BaseSource<Params> {
     return { items: payload.items, isIncomplete: payload.isIncomplete };
   }
 
-  params(): Params {
+  override params(): Params {
     return {
       ignoreCompleteProvider: false,
     };
