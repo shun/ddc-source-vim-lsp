@@ -2,11 +2,11 @@ import {
   BaseSource,
   Item,
   DdcGatherItems,
-} from "https://deno.land/x/ddc_vim@v2.3.0/types.ts#^";
+} from "https://deno.land/x/ddc_vim@v3.2.0/types.ts#^";
 
 import {
   GatherArguments,
-} from "https://deno.land/x/ddc_vim@v2.3.0/base/source.ts#^";
+} from "https://deno.land/x/ddc_vim@v3.2.0/base/source.ts#^";
 
 // deno-lint-ignore ban-types
 type Params = {
