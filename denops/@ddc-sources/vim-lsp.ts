@@ -1,7 +1,7 @@
 import {
   BaseSource,
-  Item,
   DdcGatherItems,
+  Item as DdcItem,
 } from "https://deno.land/x/ddc_vim@v3.2.0/types.ts#^";
 
 import {
@@ -33,7 +33,7 @@ export class Source extends BaseSource<Params> {
 
     const [payload] = await Promise.all([
       args.onCallback(id) as Promise<{
-        items: Item[];
+        items: DdcItem[];
         isIncomplete: boolean;
       }>,
       args.denops.call("ddc_vim_lsp#request", lspservers[0], id),
