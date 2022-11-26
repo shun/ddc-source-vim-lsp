@@ -1,4 +1,4 @@
-# ddc-vim-lsp
+# ddc-source-vim-lsp
 
 vim-lsp for ddc.vim.
 - ddc.vim : v3.2.0

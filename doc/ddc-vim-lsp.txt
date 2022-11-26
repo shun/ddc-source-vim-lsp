@@ -1,23 +1,23 @@
-*ddc-vim-lsp.txt*   LSP completion by vim-lsp for ddc.vim
+*ddc-source-vim-lsp.txt*   LSP completion by vim-lsp for ddc.vim
 
 Author: KUDO Shunsuke <kudo.shunsuke.xx@gmail.com>
 License: MIT license
 
-CONTENTS                        *ddc-vim-lsp-contents*
+CONTENTS                        *ddc-source-vim-lsp-contents*
 
-Introduction    |ddc-vim-lsp-introduction|
-Install         |ddc-vim-lsp-install|
-Examples        |ddc-vim-lsp-examples|
-Params          |ddc-vim-lsp-params|
+Introduction    |ddc-source-vim-lsp-introduction|
+Install         |ddc-source-vim-lsp-install|
+Examples        |ddc-source-vim-lsp-examples|
+Params          |ddc-source-vim-lsp-params|
 
 
 ==============================================================================
-INTRODUCTION                    *ddc-vim-lsp-introduction*
+INTRODUCTION                    *ddc-source-vim-lsp-introduction*
 
 This source collects candidates from Language Server by vim-lsp the cursor.
 
 ==============================================================================
-INSTALL                         *ddc-vim-lsp-install*
+INSTALL                         *ddc-source-vim-lsp-install*
 
 Please install below plugins.
 
@@ -27,10 +27,10 @@ https://github.com/Shougo/ddc-matcher_head
 https://github.com/prabirshrestha/vim-lsp
 
 ==============================================================================
-EXAMPLES                        *ddc-vim-lsp-examples*
+EXAMPLES                        *ddc-source-vim-lsp-examples*
 
 >
-    " Use ddc-vim-lsp source.
+    " Use ddc-source-vim-lsp source.
     call ddc#custom#patch_global('sources', ['vim-lsp'])
     call ddc#custom#patch_global('sourceOptions', {
         \ 'vim-lsp': {
