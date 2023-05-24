@@ -1,7 +1,6 @@
 # v0.1.0
 
 ```plantuml
-
 box "vim/neovim" #A5D6A7
   participant core
 end box
@@ -66,13 +65,11 @@ ddc -> source: gatherCandidates
   return variable
   denops --> source: lsp items
   source --> ddc: return candidates
-
 ```
 
 # v0.0.1
 
 ```plantuml
-
 box "vim/neovim" #A5D6A7
   participant core
 end box

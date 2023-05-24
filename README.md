@@ -1,6 +1,7 @@
 # ddc-source-vim-lsp
 
 vim-lsp for ddc.vim.
+
 - ddc.vim : v3.2.0
 
 ## Required
@@ -29,26 +30,26 @@ https://github.com/mattn/vim-lsp-settings
     e.g.
 
     call ddc#custom#patch_global('sources', ['vim-lsp'])
-    call ddc#custom#patch_global('sourceOptions', {
-        \ 'vim-lsp': {
-        \   'matchers': ['matcher_head'],
-        \   'mark': 'lsp',
-        \ },
+    call ddc#custom#patch_global('sourceOptions', #{
+        \   vim-lsp: #{
+        \     matchers: ['matcher_head'],
+        \     mark: 'lsp',
+        \   },
         \ })
 
     " if you want to use the unsupported CompleteProvider Server,
     " set true by'ignoreCompleteProvider'.
-    call ddc#custom#patch_filetype(['css'], {
-       \ 'sourceParams': {
-       \   'vim-lsp': {
-       \     'ignoreCompleteProvider': v:true,
+    call ddc#custom#patch_filetype(['css'], #{
+       \   sourceParams: #{
+       \     vim-lsp: #{
+       \       ignoreCompleteProvider: v:true,
+       \     },
        \   },
-       \ },
        \ })
 ```
 
-ddc.vim remove duplicated keyword by default.
-If you want to list up both of them, please add `'dup': v:true` .
+ddc.vim remove duplicated keyword by default. If you want to list up both of
+them, please add `'dup': v:true` .
 
 ## Screenshots
 
@@ -57,4 +58,3 @@ If you want to list up both of them, please add `'dup': v:true` .
 ## Author
 
 KUDO Shunsuke (skudo_xx)
-
