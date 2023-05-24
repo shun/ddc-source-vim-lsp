@@ -1,6 +1,7 @@
 # ddc-source-vim-lsp
 
 vim-lsp for ddc.vim.
+
 - ddc.vim : v3.2.0
 
 ## Required
@@ -47,8 +48,8 @@ https://github.com/mattn/vim-lsp-settings
        \ })
 ```
 
-ddc.vim remove duplicated keyword by default.
-If you want to list up both of them, please add `'dup': v:true` .
+ddc.vim remove duplicated keyword by default. If you want to list up both of
+them, please add `'dup': v:true` .
 
 ## Screenshots
 
@@ -57,4 +58,3 @@ If you want to list up both of them, please add `'dup': v:true` .
 ## Author
 
 KUDO Shunsuke (skudo_xx)
-
