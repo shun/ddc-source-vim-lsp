@@ -2,11 +2,11 @@ import {
   BaseSource,
   DdcGatherItems,
   Item as DdcItem,
-} from "https://deno.land/x/ddc_vim@v3.4.1/types.ts";
+} from "https://deno.land/x/ddc_vim@v4.1.0/types.ts";
 
 import {
   GatherArguments,
-} from "https://deno.land/x/ddc_vim@v3.4.1/base/source.ts";
+} from "https://deno.land/x/ddc_vim@v4.1.0/base/source.ts";
 
 type Params = {
   ignoreCompleteProvider: boolean;
@@ -22,8 +22,7 @@ export class Source extends BaseSource<Params> {
     const lspservers: string[] = await args.denops.call(
       "ddc_vim_lsp#get_completion_servers",
       args.sourceParams.ignoreCompleteProvider,
-      // deno-lint-ignore no-explicit-any
-    ) as any;
+    ) as string[];
     if (lspservers.length === 0) {
       return [];
     }
@@ -37,7 +36,10 @@ export class Source extends BaseSource<Params> {
       }>,
       args.denops.call("ddc_vim_lsp#request", lspservers[0], id),
     ]);
-    return { items: payload.items, isIncomplete: payload.isIncomplete };
+    return {
+      items: payload.items,
+      isIncomplete: payload.isIncomplete,
+    };
   }
 
   override params(): Params {
