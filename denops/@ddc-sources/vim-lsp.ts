@@ -2,11 +2,11 @@ import {
   BaseSource,
   DdcGatherItems,
   Item as DdcItem,
-} from "https://deno.land/x/ddc_vim@v4.1.0/types.ts";
+} from "https://deno.land/x/ddc_vim@v4.3.1/types.ts";
 
 import {
   GatherArguments,
-} from "https://deno.land/x/ddc_vim@v4.1.0/base/source.ts";
+} from "https://deno.land/x/ddc_vim@v4.3.1/base/source.ts";
 
 type Params = {
   ignoreCompleteProvider: boolean;
