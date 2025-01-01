@@ -8,14 +8,22 @@ function! ddc_vim_lsp#_callback(server, position, id, data) abort
       \ 'position': a:position,
       \ 'response': a:data['response'],
       \ }
-  let lspitems = lsp#omni#get_vim_completion_items(l:options)['items']
+  let completionResult = lsp#omni#get_vim_completion_items(l:options)
+  let startcol = completionResult['startcol']
+  let lspitems = completionResult['items']
+
   let isIncomplete = (
         \   type(a:data['response']['result']) == 4
         \   && has_key(a:data['response']['result'], 'isIncomplete')
         \ ) ?
         \ a:data['response']['result']['isIncomplete'] : v:false
 
-  call ddc#callback(a:id, {'items': lspitems, 'isIncomplete': isIncomplete})
+  call ddc#callback(a:id, {
+        \'items': lspitems,
+        \'isIncomplete': isIncomplete,
+        \'startcol': startcol,
+        \'currentcol': col('.')
+        \})
 endfunction
 
 function! ddc_vim_lsp#request(server_name, id) abort

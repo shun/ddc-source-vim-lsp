@@ -33,11 +33,18 @@ export class Source extends BaseSource<Params> {
       args.onCallback(id) as Promise<{
         items: DdcItem[];
         isIncomplete: boolean;
+        startcol: number;
+        currentcol: number;
       }>,
       args.denops.call("ddc_vim_lsp#request", lspservers[0], id),
     ]);
     return {
-      items: payload.items,
+      items: payload.items.map((elem: DdcItem) => {
+        elem["word"] = elem["word"].slice(
+          payload.currentcol - payload.startcol,
+        );
+        return elem;
+      }),
       isIncomplete: payload.isIncomplete,
     };
   }
