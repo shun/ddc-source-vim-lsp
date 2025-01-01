@@ -19,10 +19,10 @@ function! ddc_vim_lsp#_callback(server, position, id, data) abort
         \ a:data['response']['result']['isIncomplete'] : v:false
 
   call ddc#callback(a:id, {
-        \'items': lspitems,
-        \'isIncomplete': isIncomplete,
-        \'startcol': startcol,
-        \'currentcol': col('.')
+        \ 'items': lspitems,
+        \ 'isIncomplete': isIncomplete,
+        \ 'startcol': startcol,
+        \ 'currentcol': col('.'),
         \})
 endfunction
 
