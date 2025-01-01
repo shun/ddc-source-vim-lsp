@@ -40,7 +40,7 @@ export class Source extends BaseSource<Params> {
     ]);
     return {
       items: payload.items.map((elem: DdcItem) => {
-        elem["word"] = elem["word"].slice(
+        elem.word = elem.word.slice(
           payload.currentcol - payload.startcol,
         );
         return elem;
